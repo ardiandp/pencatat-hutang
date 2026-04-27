@@ -161,11 +161,15 @@ require_once 'includes/header.php';
             <?php else: ?><span style="color:var(--text-muted)">—</span><?php endif; ?>
           </td>
           <td><span class="badge badge-<?= $st[0] ?>"><?= $st[1] ?></span></td>
-          <td>
-            <?php if ($row['bukti_gambar']): ?>
-              <img src="<?= $row['bukti_gambar'] ?>" class="img-preview" onclick="openLightbox(this.src)" title="Klik untuk perbesar">
-            <?php else: ?><span style="font-size:.75rem;color:var(--text-muted)">—</span><?php endif; ?>
-          </td>
+         <td>
+  <?php if ($row['bukti_gambar']): ?>
+    <button type="button" class="btn btn-outline btn-xs" onclick="openLightbox('<?= h($row['bukti_gambar']) ?>')">
+      <i class="fa-solid fa-image"></i> Lihat
+    </button>
+  <?php else: ?>
+    <span style="font-size:.75rem;color:var(--text-muted)">—</span>
+  <?php endif; ?>
+</td>
           <td>
             <div style="display:flex;gap:4px">
               <a href="detail_hutang.php?id=<?= $row['id'] ?>" class="btn btn-outline btn-xs" title="Detail"><i class="fa-solid fa-eye"></i></a>
